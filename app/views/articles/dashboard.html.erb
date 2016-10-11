@@ -1,0 +1,301 @@
+<div class="col-md-12">
+  <div class="box">
+
+    <ul id="admin-tabs" class="nav nav-tabs nav-justified">
+      <li class="active"><a href="#news" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span><%= t('news')%></a></li>
+      <li><a href="#recipes" data-toggle="tab"><span class="glyphicon glyphicon-glass"></span><%= t('recipes') %></a></li>
+      <li><a href="#events" data-toggle="tab"><span class="glyphicon glyphicon-calendar"></span><%= t('events') %></a></li>
+      <li><a href="#history" data-toggle="tab"><span class="glyphicon glyphicon-tags"></span><%= t('history') %></a></li>
+      <li><a href="#bars" data-toggle="tab"><span class="glyphicon glyphicon-star"></span><%= t('bars') %></a></li>
+      <li><a href="#users" data-toggle="tab"><span class="glyphicon glyphicon-user"></span><%= t('users') %></a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="news" class="tab-pane fade in active">
+        <%= link_to new_article_path(:new), class: 'btn btn-primary add' do %>
+            <span class="glyphicon glyphicon-plus"></span> <%= t('add') %>
+        <% end %>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th><%= t('title_field') %></th>
+            <th><%= t('history') %></th>
+            <th><%= t('published') %></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @news.each do |new|  %>
+              <tr>
+                <td><%= new.id %></td>
+                <td><%= new.title %></td>
+                <td><%= new.content %></td>
+                <td><%= new.published %></td>
+                <td class="row-action">
+                  <%= link_to show_article_path(new), { class: 'btn btn-primary glyphicon glyphicon-eye-open'} do%>
+
+                  <% end %>
+                  <%= link_to edit_article_path(new, type: new.class), { class: 'btn btn-default'} do%>
+                      <span class="glyphicon glyphicon-edit"></span>
+                  <% end %>
+                  <%= link_to '#', { class: 'btn btn-danger', 'data-toggle'=> 'modal', 'data-target'=>'#remove_msg', 'data-value'=> new.id} do%>
+                      <span class="glyphicon glyphicon-remove"></span>
+                  <% end %>
+
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <ul class="pager">
+          <li id="prev_new" class="previous disabled"><%= link_to t('previous'),paginate_path(type: :new, page: 1),remote: true %></li>
+          <li id="next_new" class="next"><%= link_to t('next'),paginate_path(type: :new, page: 2),remote: true %></li>
+        </ul>
+      </div>
+      <div id="recipes" class="tab-pane fade">
+        <%= link_to new_article_path(:recipe), class: 'btn btn-primary add' do %>
+            <span class="glyphicon glyphicon-plus"></span> <%= t('add') %>
+        <% end %>
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th><%= t('title_field') %></th>
+            <th><%= t('history') %></th>
+            <th><%= t('published') %></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @recipes.each do |recipe|  %>
+              <tr>
+                <td><%= recipe.id %></td>
+                <td><%= recipe.title %></td>
+                <td><%= recipe.content %></td>
+                <td><%= recipe.published %></td>
+                <td class="row-action">
+                  <%= link_to show_article_path(recipe), { class: 'btn btn-primary glyphicon glyphicon-eye-open'} do%>
+
+                  <% end %>
+                  <%= link_to edit_article_path(recipe, type: recipe.class), { class: 'btn btn-default'} do%>
+                      <span class="glyphicon glyphicon-edit"></span>
+                  <% end %>
+                  <%= link_to '#', { class: 'btn btn-danger', 'data-toggle'=> 'modal', 'data-target'=>'#remove_msg', 'data-value'=> recipe.id} do%>
+                      <span class="glyphicon glyphicon-remove"></span>
+                  <% end %>
+
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+
+        </table>
+        <ul class="pager">
+          <li id="prev_recipe" class="previous disabled"><%= link_to t('previous'),paginate_path(type: :recipe, page: 1),remote: true %></li>
+          <li id="next_recipe" class="next"><%= link_to t('next'),paginate_path(type: :recipe, page: 2),remote: true %></li>
+        </ul>
+      </div>
+      <div id="events" class="tab-pane fade">
+        <%= link_to new_article_path(:event), class: 'btn btn-primary add' do %>
+            <span class="glyphicon glyphicon-plus"></span> <%= t('add') %>
+        <% end %>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th><%= t('title_field') %></th>
+            <th><%= t('description') %></th>
+            <th><%= t('published') %></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @events.each do |event|  %>
+              <tr>
+                <td><%= event.id %></td>
+                <td><%= event.title %></td>
+                <td><%= event.content %></td>
+                <td><%= event.classification %></td>
+                <td class="row-action">
+                  <%= link_to show_article_path(event), { class: 'btn btn-primary glyphicon glyphicon-eye-open'} do%>
+
+                  <% end %>
+                  <%= link_to edit_article_path(event, type: event.class), { class: 'btn btn-default'} do%>
+                      <span class="glyphicon glyphicon-edit"></span>
+                  <% end %>
+                  <%= link_to '#', { class: 'btn btn-danger', 'data-toggle'=> 'modal', 'data-target'=>'#remove_msg', 'data-value'=> event.id} do%>
+                      <span class="glyphicon glyphicon-remove"></span>
+                  <% end %>
+
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <ul class="pager">
+          <li id="prev_event" class="previous disabled"><%= link_to t('previous'),paginate_path(type: :event, page: 1),remote: true %></li>
+          <li id="next_event" class="next"><%= link_to t('next'),paginate_path(type: :event, page: 2),remote: true %></li>
+        </ul>
+      </div>
+      <div id="history" class="tab-pane fade">
+        <%= link_to new_article_path(:history), class: 'btn btn-primary add' do %>
+            <span class="glyphicon glyphicon-plus"></span> <%= t('add') %>
+        <% end %>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th><%= t('title_field') %></th>
+            <th><%= t('history') %></th>
+            <th><%= t('published') %></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @history.each do |history|  %>
+              <tr>
+                <td><%= history.id %></td>
+                <td><%= history.title %></td>
+                <td><%= history.content %></td>
+                <td><%= history.published %></td>
+                <td class="row-action">
+                  <%= link_to show_article_path(history), { class: 'btn btn-primary glyphicon glyphicon-eye-open'} do%>
+
+                  <% end %>
+                  <%= link_to edit_article_path(history, type: history.class), { class: 'btn btn-default'} do%>
+                      <span class="glyphicon glyphicon-edit"></span>
+                  <% end %>
+                  <%= link_to '#', { class: 'btn btn-danger', 'data-toggle'=> 'modal', 'data-target'=>'#remove_msg', 'data-value'=> history.id} do%>
+                      <span class="glyphicon glyphicon-remove"></span>
+                  <% end %>
+
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <ul class="pager">
+          <li id="prev_history" class="previous disabled"><%= link_to t('previous'),paginate_path(type: :history, page: 1),remote: true %></li>
+          <li id="next_history" class="next"><%= link_to t('next'),paginate_path(type: :history, page: 2),remote: true %></li>
+        </ul>
+      </div>
+      <div id="bars" class="tab-pane fade">
+        <%= link_to new_article_path(:bar), class: 'btn btn-primary add' do %>
+            <span class="glyphicon glyphicon-plus"></span> <%= t('add') %>
+        <% end %>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th><%= t('name_field') %></th>
+            <th><%= t('address_field') %></th>
+            <th><%= t('published') %></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @bars.each do |bar|  %>
+              <tr>
+                <td><%= bar.id %></td>
+                <td><%= bar.title %></td>
+                <td><%= bar.content %></td>
+                <td><%= bar.published %></td>
+                <td class="row-action">
+                  <%= link_to show_article_path(bar), { class: 'btn btn-primary glyphicon glyphicon-eye-open'} do%>
+
+                  <% end %>
+                  <%= link_to edit_article_path(bar, type: bar.class), { class: 'btn btn-default'} do%>
+                      <span class="glyphicon glyphicon-edit"></span>
+                  <% end %>
+                  <%= link_to '#', { class: 'btn btn-danger', 'data-toggle'=> 'modal', 'data-target'=>'#remove_msg', 'data-value'=> bar.id} do%>
+                      <span class="glyphicon glyphicon-remove"></span>
+                  <% end %>
+
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <ul class="pager">
+          <li id="prev_bar" class="previous disabled"><%= link_to t('previous'),paginate_path(type: :bar, page: 1),remote: true %></li>
+          <li id="next_bar" class="next"><%= link_to t('next'),paginate_path(type: :bar, page: 2),remote: true %></li>
+        </ul>
+      </div>
+
+      <div id="users" class="tab-pane fade">
+        <%= link_to users_path, class: 'btn btn-primary add' do %>
+            <span class="glyphicon glyphicon-plus"></span> <%= t('add') %>
+        <% end %>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th><%= t('name_field') %></th>
+            <th><%= t('admin.table_headers.username') %></th>
+            <th><%= t('devise.sessions.email_label') %></th>
+            <th><%= t('devise.sessions.pass_label') %></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @users.each do |user|  %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.nickname %></td>
+                <td><%= user.email %></td>
+                <td><%= user.encrypted_password %></td>
+                <td class="row-action">
+                  <%= link_to '#', { class: 'btn btn-danger', 'data-toggle'=> 'modal', 'data-target'=>'#remove_msg', 'data-value'=> user.id} do%>
+                      <span class="glyphicon glyphicon-remove"></span>
+                  <% end %>
+
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="remove_msg" tabindex="-1" role="dialog"
+       aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"
+                  aria-hidden="true">×
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+            <%= t('remove_element_title') %>
+          </h4>
+        </div>
+        <div class="modal-body">
+          <%= t('remove_element_msg') %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default"
+                  data-dismiss="modal">
+            <%= t('cancel') %>
+          </button>
+          <a href="#" class="btn btn-primary submit" data-remote="true" data-method="delete">
+            <%= t('accept') %>
+          </a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+</div>
+<script type="text/javascript" charset="utf-8">
+  $('#next_new a').bind('ajax:error',function(event, request, settings) {
+    alert(request.responseText);
+  });
+
+  $('#next_new a').bind('ajax:success', function(evt, data, status, xhr){
+
+  });
+</script>
+<%= javascript_include_tag "articles_index" %>

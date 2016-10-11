@@ -1,0 +1,19 @@
+<script>
+  infinite_scroll_active = false;
+</script>
+<% count =@articles.count
+   count1 = count%2==0? count/2 : (count/2)+1
+   count2 = count-count1
+%>
+<div class="col-md-6">
+  <% count1.times do |i|  %>
+      <%= render 'recipe', recipe: @articles[i] %>
+  <% end  %>
+</div>
+<div class="col-md-6">
+  <% count2.times do |i|  %>
+      <%= render 'recipe', recipe: @articles[i+count1] %>
+  <% end  %>
+</div>
+
+

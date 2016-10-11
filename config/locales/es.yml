@@ -1,0 +1,81 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  welcome: "Bienvenido a nuestra "
+  official_page: "Página Oficial"
+  home_link: "Inicio"
+  news: "Noticias"
+  history: "Historia"
+  recipes: "Recetas"
+  events: "Eventos"
+  information: "Información"
+  title: "Asociación de Cantineros de Cuba"
+  subtitle: "Fundada el 27 de junio de 1924 en La Habana, Cuba"
+  title_min: "ACC"
+  address: "The Plaza | 5483 Start Bootstrap Ave. | Beverly Hills, California 26892 | 555.519.2013"
+  ingredients: "Ingredientes"
+  bars: "Bares"
+  antiques: "Cócteles Antiguos"
+  classics: "Cócteles Clásicos"
+  moderns: "Cócteles Contemporáneos"
+  local_news: "Noticias Nacionales"
+  international_news: "Noticias Interacionales"
+  local_events: "Eventos Nacionales"
+  international_events: "Eventos Interacionales"
+  acc: "Asociación de Cantineros de Cuba"
+  ccrc: "Club de Cantineros de la República de Cuba"
+  preparation: "preparación"
+  new_recipe: "Nueva Receta"
+  new_history: "Nueva Historia"
+  new_new: "Nueva Noticia"
+  new_event: "Nuevo Evento"
+  new_bar: "Nuevo Bar"
+  title_field: "Título"
+  name_field: "Nombre"
+  address_field: "Dirección"
+  source_field: "Fuente"
+  content: "Contenido"
+  classification: "Clasificación"
+  author: "Autor"
+  ingredient: "Ingrediente"
+  add: "Agregar"
+  remove: "Eliminar"
+  save: "Guardar"
+  all: "Todos"
+  antiques: "Antiguos"
+  classics: "Clásicos"
+  moderns: "Modernos"
+  step: "Paso"
+  images: "Imágenes"
+  published: "Publicado"
+  event_date: "Fecha"
+  remove_element_title: "Eliminar Elemento"
+  remove_element_msg: "Está seguro de eliminar el elemento seleccionado?"
+  cancel: "Cancelar"
+  accept: "Aceptar"
+  previous: "< Anterior"
+  next: "Siguiente >"
+  no_result: "No se encontraron resultados"
+  loading: "Cargando"
+  users: "Usuarios"
+
+

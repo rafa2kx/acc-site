@@ -1,0 +1,82 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require font-awesome
+ */
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/assets/glyphicons-halflings-regular.eot');
+    src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('/assets/glyphicons-halflings-regular.woff') format('woff'),
+    url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
+    url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+a:visited{
+    color: inherit;
+}
+#admin-tabs li a{
+    text-transform: uppercase;
+    color: #3071A9;
+    font-weight: normal;
+}
+td.row-action{
+    width: 150px;
+    text-align: right;
+}
+.add{
+    float: right;
+    margin-top: 15px;
+}
+.field{
+    margin-bottom: 15px;
+}
+
+.actions{
+    margin-bottom: 10px;
+}
+.menu > li:hover{
+    background-color: #a94442;
+}
+.menu > li > .dropdown-menu{
+    background-color: #E7E7E7;
+    padding: 10px;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+    background-color: #a94442;
+}
+.dropdown-menu > li > a, .dropdown-menu > li > a{
+    padding: 10px;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+    background-color: #d8716b;
+}
+.navbar-default .navbar-nav > a, .navbar-default .navbar-nav > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+    color: #ffffff;
+}
+.recipe >p{
+    font-size: 1em;
+}
+.ingredients{
+    margin: 5px 5px;
+}
+.glyphicon{
+    margin-right: 5px;
+}
+ul#admin-tabs.nav>li>a{
+    padding: 10px;
+}
+

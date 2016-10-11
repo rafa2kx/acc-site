@@ -1,0 +1,12 @@
+<script>
+  type = '<%= @type %>';
+</script>
+<% @articles.each do |new|  %>
+    <%= render 'article', article: new %>
+<% end %>
+<script>
+    $('.carousel').carousel({
+        interval: 5000
+    })
+</script>
+<%= javascript_include_tag "infinite_scroll" %>

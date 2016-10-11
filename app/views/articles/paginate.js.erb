@@ -1,0 +1,40 @@
+<% if @result.count > 0 %>
+
+var type = '<%= @type.downcase %>';
+var result = '<tbody style="display:none">' +
+    <% @result.each do |article| %>
+    '<tr>'+
+    '<td><%= article.id %></td>'+
+    '<td><%= article.title %></td>'+
+    '<td><%= article.content.tr("\r\n", "\n").tr("\r", "\n").tr("\n", ' ') %></td>'+
+
+    '<td><%= article.published %></td>'+
+    '<td class="row-action">'+
+    '<%= link_to '',show_article_path(article), { class: "btn btn-primary glyphicon glyphicon-eye-open"}%>'+
+    '<%= link_to '', edit_article_path(article, type: article.class), { class: 'btn btn-default glyphicon glyphicon-edit'}%>'+
+    '<%= link_to '','#', { class: 'btn btn-danger glyphicon glyphicon-remove', 'data-toggle'=> 'modal', 'data-target'=>'#remove_msg', 'data-value'=> article.id}%>'+
+
+    '</td>'+
+    '</tr>'+
+    <% end  %>
+    '</tbody>';
+$("#"+type+"s tbody").fadeOut('fast',function(){
+  this.remove();
+  $("#"+type+"s table").append(result);
+  $("#"+type+"s tbody").fadeIn('fast');
+});
+if("<%=@page%>" == "1"){
+  $("#prev_" + type).attr('class','previous disabled');
+  $("#prev_" + type+ " a").attr('href','admin/'+type+'/paginate/1');
+  $("#next_" + type+ " a").attr('href','admin/'+type+'/paginate/2');
+}else{
+  $("#prev_" + type).attr('class','previous');
+  $("#prev_" + type+ " a").attr('href','admin/'+type+'/paginate/<%= @page.to_i - 1%>');
+  $("#next_" + type+ " a").attr('href','admin/'+type+'/paginate/<%= @page.to_i + 1%>');
+}
+<% else %>
+showAlert('info', '<%= t 'no_result' %>');
+$("#next_" + type).attr('class','next disabled');
+<% end %>
+
+

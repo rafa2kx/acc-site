@@ -1,0 +1,138 @@
+<%= form_for(@article, {url: {action: 'create'}, :html => { :multipart => true }}) do |f| %>
+    <%= f.hidden_field_tag :type, @article.type%>
+    <% if @article.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+          <ul>
+            <% @article.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <% if !alert.nil?  %>
+        <% if !alert['success'].nil? %>
+            <div class="alert alert-success alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                &times;
+              </button>
+              <%= alert['success'] %>
+            </div>
+        <% end %>
+        <% if !alert['error'].nil? %>
+            <div class="alert alert-danger alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                &times;
+              </button>
+              <%= alert['error'] %>
+            </div>
+        <% end %>
+    <% end %>
+    <div class="row">
+      <div class="box">
+        <%= link_to admin_path,class: 'btn btn-default', style:'float:right' do %>
+            <span class="glyphicon glyphicon-home"></span>
+        <% end  %>
+        <div class="col-lg-12">
+          <hr>
+          <h2 class="intro-text text-center"><strong><%= t ('new_'+@type.downcase) %></strong>
+          </h2>
+          <hr>
+        </div>
+        <div class="col-md-8 col-md-offset-2 ">
+
+          <div class="field" >
+            <%= f.label :title, "#{t ('title_field')}" %><br />
+            <%= f.text_field :title, autofocus: true, class:'form-control' %>
+          </div>
+
+          <div class="field">
+            <%= f.label :content,"#{t ('content')}" %><br />
+            <%= f.text_area :content, autocomplete: "off", class:'form-control rich-content'%>
+          </div>
+
+          <div class="field" >
+            <%= f.label :classification, "#{t ('classification')}" %><br />
+            <%= f.select :classification, options_for_select(@classifications),{include_blank:false},{class:'form-control'} %>
+          </div>
+
+          <div class="field" >
+            <%= f.label :author, "#{t ('author')}" %><br />
+            <%= f.text_field :author, class:'form-control' %>
+          </div>
+
+          <div class="field images-inputs" >
+            <%= f.label :images, "#{t ('images')}" %><br/>
+            <%= f.button_tag "", {id: :add_image,type: :button, class:'form-control btn-default glyphicon glyphicon-plus', style:'width: 40px; display:inline; font-weight:bold; display:none; float:right;'}%>
+            <div id="image_0" style="display: inline">
+              <%= f.file_field_tag 'image[0][content]', {id:'image_input_0', class:'file-upload', style:'width:90%; display:inline;'}%>
+              <div style="position: relative;">
+                <%= image_tag "image", {id:'image-loader_0', style:'display:none; padding:15px; z-index:0;', width: '300px'}%>
+                <%= f.button_tag "X", {type: :button, class:'rem_image form-control btn-default', style:'width: 40px; font-weight:bold; display:none; position:absolute; z-index:1; top:20px; left:20px;'}%>
+              </div>
+            </div>
+
+          </div>
+
+          <% if @article.type == 'Recipe' %>
+              <div class="field ">
+                <%= f.label nil, "#{t ('ingredient')}s"  %>
+                <%= f.text_field_tag 'ingredient', nil,id: :ingredient_value, class:'form-control', style:'width:90%; display:inline;' %>
+                <%= f.button_tag '', {id: :add_ingredient,type: :button, class:'form-control btn-default glyphicon glyphicon-plus', style:'width: 40px; display:inline; font-weight:bold;'}%>
+
+              </div>
+
+              <div class="ingredients col-md-12">
+              </div>
+
+              <div class="field">
+                <%= f.label :step,"#{t ('step')}s" %><br />
+                <%= f.text_area :steps, autocomplete: "off", class:'form-control' %>
+              </div>
+              <!--<div class="field ">-->
+              <!--<%= f.label nil, "#{t ('step')}s", style:'display:block'  %>-->
+              <!--<%= f.text_field_tag 'step', nil,id: :step_value, class:'form-control', style:'width:90%; display:inline;' %>-->
+              <!--<%= f.button_tag "+", {id: :add_step,type: :button, class:'form-control btn-default', style:'width: 40px; display:inline; font-weight:bold;'}%>-->
+              <!--</div>-->
+
+              <div class="steps col-md-12">
+              </div>
+          <% else %>
+              <div class="field ">
+                <%= f.label :source, "#{t ('source_field')}" %><br />
+                <%= f.text_field :source, autofocus: true, class:'form-control' %>
+              </div>
+
+              <div class="field ">
+                <%= f.label :published, "#{t ('published')}" %><br />
+                <%= f.date_select :published, autofocus: true, class:'form-control' %>
+              </div>
+          <% end %>
+          <% if @article.type == 'Bar' %>
+              <div class="field ">
+                <%= f.label :address, "#{t ('address_field')}" %><br />
+                <%= f.text_field :address, autofocus: true, class:'form-control' %>
+              </div>
+          <%end %>
+          <%= f.submit t('save'), class: 'btn btn-primary'  %>
+
+        </div>
+      </div>
+    </div>
+
+<% end %>
+<%= javascript_include_tag "articles_add" %>
+<script>
+  $(function() {
+    $('textarea.rich-content').froalaEditor({
+      language: 'es',
+      height: '400px'
+    })
+  });
+</script>
+
+
+
+
+

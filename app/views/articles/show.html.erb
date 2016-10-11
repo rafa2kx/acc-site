@@ -1,0 +1,5 @@
+<% if @article.is_a? Recipe %>
+    <%= render 'recipe', recipe:@article %>
+<%else %>
+    <%= render 'article', article:@article %>
+<% end %>

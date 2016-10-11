@@ -1,0 +1,66 @@
+<% count =@recipes.count
+   count1 = count%2==0? count/2 : (count/2)+1
+   count2 = count-count1
+%>
+<div class="col-md-6">
+  <% count1.times do |i|  %>
+      <%recipe = @recipes[i]  %>
+      <div class="box recipe">
+        <hr>
+        <h2 class="intro-text text-center"><%= recipe.title %>
+        </h2>
+        <hr>
+        <div class="col-lg-12" >
+          <p><%= recipe.content %></p>
+        </div>
+        <% if !recipe.images[0].nil? %>
+            <div class="col-lg-4" >
+              <%= image_tag recipe.images[0].content.url,class:'img-responsive img-border img-left' %>
+            </div>
+        <% end %>
+        <div class="col-lg-8">
+          <h5 ><%= t 'ingredients' %></h5>
+          <% ingredients = recipe.ingredients.split '#'  %>
+          <ul>
+            <% ingredients.each do |ingredient|  %>
+                <li><%= ingredient %></li>
+            <% end  %>
+          </ul>
+          <h5 ><%= t 'preparation' %></h5>
+          <p><%= recipe.steps %></p>
+        </div>
+      </div>
+  <% end  %>
+</div>
+<div class="col-md-6">
+  <% count2.times do |i|  %>
+      <%recipe = @recipes[i+count1]  %>
+      <div class="box recipe">
+        <hr>
+        <h2 class="intro-text text-center"><%= recipe.title %>
+        </h2>
+        <hr>
+        <div class="col-lg-12" >
+          <p><%= recipe.content %></p>
+        </div>
+        <% if !recipe.images[0].nil? %>
+            <div class="col-lg-4" >
+              <%= image_tag recipe.images[0].content.url,class:'img-responsive img-border img-left' %>
+            </div>
+        <% end %>
+        <div class="col-lg-8">
+          <h5 ><%= t 'ingredients' %></h5>
+          <% ingredients = recipe.ingredients.split '#'  %>
+          <ul>
+            <% ingredients.each do |ingredient|  %>
+                <li><%= ingredient %></li>
+            <% end  %>
+          </ul>
+          <h5 ><%= t 'preparation' %></h5>
+          <p><%= recipe.steps %></p>
+        </div>
+      </div>
+  <% end  %>
+</div>
+
+

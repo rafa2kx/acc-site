@@ -1,0 +1,80 @@
+var infinite_scroll_active = true;
+var next_page = 2;
+var executing = false;
+(function($, window, undefined) {
+  var InfiniteScroll = function() {
+    this.initialize = function() {
+      this.setupEvents();
+    };
+
+    this.setupEvents = function() {
+      $(window).on(
+          'scroll',
+          this.handleScroll.bind(this)
+      );
+    };
+
+    this.handleScroll = function() {
+      var scrollTop = $(document).scrollTop();
+      var windowHeight = $(window).height();
+      var height = $(document).height() - windowHeight;
+      var scrollPercentage = (scrollTop / height);
+
+
+      // if the scroll is more than 90% from the top, load more content.
+      if(scrollPercentage > 0.9 && infinite_scroll_active) {
+        if(!executing)
+          this.doSomething();
+      }
+    }
+
+    this.doSomething = function() {
+
+      executing = true;
+      loading = '<div id="loader" class="row" style="display: none">'+
+          '<div class="box">'+
+          '<div class="col-lg-12" style="text-align: center">'+
+          '<span style="display: block"><%= I18n.t 'loading' %></span>'+
+          '<%= image_tag "ajax-loader.gif", "style"=>"margin: auto" %>'+
+          '</div>'+
+          '</div>'+
+          '</div>';
+
+      $("#content").append(loading);
+      $('#loader').fadeIn();
+
+      $.ajax({
+        url: '/scroll',
+        data: {type:type, page:next_page},
+        datatype: 'script',
+        type: 'GET',
+        contentType:"application/x-javascript; charset:ISO-8859-1",
+        success: function(data){
+          $('#loader').fadeOut(function(){
+            this.remove();
+            sdata = data.trim()
+            if(sdata == "")
+              infinite_scroll_active =false;
+            else
+              $(sdata).css({display:'none'}).appendTo($("#content")).fadeIn();
+          });
+
+          executing = false;
+          next_page++;
+        },
+        error: function(data, e, t) {
+          alert(data.responseText + ' woops!'); //or whatever
+        }
+      });
+    }
+
+    this.initialize();
+  }
+
+  $(document).ready(
+      function() {
+        // Initialize scroll
+        new InfiniteScroll();
+      }
+  );
+})(jQuery, window);
