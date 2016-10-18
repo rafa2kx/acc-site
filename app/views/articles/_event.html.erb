@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="box">
+    <div class="col-lg-12">
+      <hr>
+      <h2 class="intro-text text-center"><%= event.title %>
+      </h2>
+      <hr>
+      <% if !event.images.empty? %>
+          <div class="col-lg-5">
+            <div id="carousel-<%= event.id %>" class="carousel slide">
+
+              <ol class="carousel-indicators hidden-xs">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <% for i in (1...event.images.count) do %>
+                    <li data-target="#carousel-example-generic" data-slide-to="<%= i %>"></li>
+                <% end  %>
+              </ol>
+
+              <div class="carousel-inner">
+                <div class="item active" style="height: 300px">
+                  <img class="img-responsive img-full" src="<%= event.images[0].content.url %>" alt="" height="400px">
+                </div>
+
+                <% for i in (1...event.images.count) do %>
+                    <div class="item" style="height: 300px">
+                      <img class="img-responsive img-full" src="<%= event.images[i].content.url(:medium) %>" alt="" height="400px">
+                    </div>
+                <% end %>
+              </div>
+
+              <!-- Controls -->
+              <a class="left carousel-control" href="#carousel-<%= event.id %>" data-slide="prev">
+                <span class="icon-prev"></span>
+              </a>
+              <a class="right carousel-control" href="#carousel-<%= event.id %>" data-slide="next">
+                <span class="icon-next"></span>
+              </a>
+            </div>
+          </div>
+      <% end  %>
+      <hr class="visible-xs">
+      <%= event.content.html_safe %>
+    </div>
+    <strong style="float: right"> <span class="countdown"></span></strong>
+    <div id="facebook_comment">
+      <div class="fb-comments" data-href="http://www.accuba.com/detail/<%= event.slug %>" data-width="300" data-numposts="5"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<%= javascript_include_tag "event_detail"%>
+<script>
+  setCountDown("<%= event.published%>","<%= t("finished") %>");
+</script>
+<script id="facebook-jssdk" src="//connect.facebook.net/es_LA/sdk.js#xfbml=1&amp;version=v2.7"></script>
+

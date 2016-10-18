@@ -12,9 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= require froala_editor.min.css
- *= require froala_style.min.css
- *= require font-awesome
  */
 
 @font-face {
@@ -24,9 +21,6 @@
     url('/assets/glyphicons-halflings-regular.woff') format('woff'),
     url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
     url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}
-a:visited{
-    color: inherit;
 }
 #admin-tabs li a{
     text-transform: uppercase;
@@ -73,10 +67,30 @@ td.row-action{
 .ingredients{
     margin: 5px 5px;
 }
-.glyphicon{
+a[data-toggle="tab"] span.glyphicon{
     margin-right: 5px;
 }
 ul#admin-tabs.nav>li>a{
     padding: 10px;
+}
+.btn-details{
+    color: #fff;
+    background-color: #a94442;
+    border-color: #873836;
+}
+.btn-details:hover{
+    color: #fff;
+    background-color: #99403e;
+    border-color: #873836;
+}
+.btn-details:visited{
+    color: #fff;
+}
+
+.fb-comments, .fb-comments iframe[style], .fb-comments span {
+    width: 100% !important;
+}
+.box p{
+    text-align: justify;
 }
 

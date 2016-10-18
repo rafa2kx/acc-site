@@ -1,5 +1,7 @@
 <% if @article.is_a? Recipe %>
     <%= render 'recipe', recipe:@article %>
+<%elsif @article.is_a? Event%>
+    <%= render 'event', event:@article %>
 <%else %>
-    <%= render 'article', article:@article %>
+    <%= render 'article', article:@article, summary_view: false %>
 <% end %>

@@ -1,5 +1,6 @@
 <%= form_for(@article, {url: {action: 'create'}, :html => { :multipart => true }}) do |f| %>
     <%= f.hidden_field_tag :type, @article.type%>
+    <%= f.hidden_field_tag :id, @article.id%>
     <% if @article.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -49,7 +50,7 @@
 
           <div class="field">
             <%= f.label :content,"#{t ('content')}" %><br />
-            <%= f.text_area :content, autocomplete: "off", class:'form-control rich-content'%>
+            <%= f.text_area :content, autocomplete: "off", class:'form-control tinymce',rows: 10, cols: 100%>
           </div>
 
           <div class="field" >
@@ -115,7 +116,9 @@
                 <%= f.text_field :address, autofocus: true, class:'form-control' %>
               </div>
           <%end %>
-          <%= f.submit t('save'), class: 'btn btn-primary'  %>
+          <%= f.submit t('save'), class: 'btn btn-primary btn-block'  %>
+          <%= link_to t('cancel'), admin_path,class: 'btn btn-default btn-block'  %>
+
 
         </div>
       </div>
@@ -123,14 +126,8 @@
 
 <% end %>
 <%= javascript_include_tag "articles_add" %>
-<script>
-  $(function() {
-    $('textarea.rich-content').froalaEditor({
-      language: 'es',
-      height: '400px'
-    })
-  });
-</script>
+<%= tinymce_assets %>
+<%= tinymce :language => 'es'%>
 
 
 

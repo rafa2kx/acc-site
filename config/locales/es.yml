@@ -49,6 +49,7 @@ es:
   new_new: "Nueva Noticia"
   new_event: "Nuevo Evento"
   new_bar: "Nuevo Bar"
+  new_user: "Nuevo Usuario"
   title_field: "Título"
   name_field: "Nombre"
   address_field: "Dirección"
@@ -77,5 +78,7 @@ es:
   no_result: "No se encontraron resultados"
   loading: "Cargando"
   users: "Usuarios"
+  read_more: "Leer Más"
+  finished: "Finalizado"
 
 

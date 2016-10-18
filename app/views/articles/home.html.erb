@@ -88,7 +88,7 @@
   </div>
 </div>
 <% @articles.each do |article| %>
-    <%= render 'article', article: article %>
+    <%= render 'article', article: article, summary_view: true %>
 <% end %>
 <script>
   // Activates the Carousel

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get 'admin/user' => 'users#new', as: :users
   get 'admin/' => 'articles#dashboard', as: :admin
   post 'admin/create' => 'articles#create', as: :create_article
-  put 'admin/update' => 'articles#update', as: :update_article
+  post 'admin/create_user' => 'users#create', as: :create_user
+  patch 'admin/create' => 'articles#update', as: :update_article
 
   get 'admin/:type/paginate/:page' => 'articles#paginate', as: :paginate
   get 'admin/:type/new' => 'articles#new', as: :new_article
@@ -24,11 +25,10 @@ Rails.application.routes.draw do
 
   #MAIN ROUTES
   root 'articles#home'
-  get ':type/:classification' => 'articles#index', as: :index
-  get 'recipes/:id/show' => 'recipes#show', as: :show_recipe
+  get 'detail/:slug' => 'articles#show', as: :detail
   get 'bars' => 'articles#bars', as: :bars
   get 'scroll' => 'articles#scroll', as: :scroll
-
+  get ':type/:classification' => 'articles#index', as: :index
 
 
   # Example of regular route:

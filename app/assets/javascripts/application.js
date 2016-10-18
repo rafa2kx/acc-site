@@ -13,8 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require froala_editor.min.js
-//= require languages/es.js
+
 
 function showAlert(alert_type, msg) {
     $("#messages").parent().prepend(
@@ -32,3 +31,4 @@ function showAlert(alert_type, msg) {
 
 }
 //= require_tree .
+//= require tinymce

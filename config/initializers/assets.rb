@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( articles_add.js )
 Rails.application.config.assets.precompile += %w( infinite_scroll.js )
 Rails.application.config.assets.precompile += %w( articles_index.js )
+Rails.application.config.assets.precompile += %w( event_detail.js )

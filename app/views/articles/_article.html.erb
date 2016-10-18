@@ -41,13 +41,29 @@
           </div>
       <% end  %>
       <hr class="visible-xs">
-      <p><%= article.content.at(0..300) + (article.content.length > 300? '...':'') %></p>
-      <%= article.content.html_safe%>
+      <% if summary_view %>
+          <%= (article.content.at(0..300) + (article.content.length > 300? '...':'')).html_safe %>
+          <%= link_to t('read_more'), detail_path(article.slug), class: 'btn btn-details'  %>
+      <%else %>
+          <%= article.content.html_safe %>
+      <% end %>
     </div>
     <% if @type == 'Event' %>
         <strong style="float: right"><%= "#{t('event_date')}: #{article.published}" %></strong>
     <% else %>
         <strong style="float: right"><%= "#{t('published')}: #{article.published}" %></strong>
     <% end %>
+
+    <% if !summary_view %>
+
+        <div id="facebook_comment" style="margin-top: 20px" class="col-lg-10 col-lg-offset-1">
+          <div class="fb-comments" data-href="http://www.accuba.com/detail/<%= article.slug %>"  data-numposts="5"></div>
+        </div>
+        <script id="facebook-jssdk" src="//connect.facebook.net/es_LA/sdk.js#xfbml=1&amp;version=v2.7"></script>
+
+    <% end  %>
+
+
   </div>
 </div>
+

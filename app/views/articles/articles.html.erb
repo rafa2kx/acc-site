@@ -2,7 +2,7 @@
   type = '<%= @type %>';
 </script>
 <% @articles.each do |new|  %>
-    <%= render 'article', article: new %>
+    <%= render 'article',summary_view: true, article: new  %>
 <% end %>
 <script>
     $('.carousel').carousel({

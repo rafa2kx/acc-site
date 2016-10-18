@@ -43,7 +43,9 @@
 <div class="brand row">
 
   <div class ="col-md-1">
-    <%=image_tag'logo_acc.png', width: '90px'%>
+    <a href="/">
+      <%=image_tag'logo_acc.png', width: '90px'%>
+    </a>
   </div>
   <div class ="col-md-10">
     <%=t('title') %>
@@ -51,7 +53,9 @@
 
   </div>
   <div class ="col-md-1">
-    <%=image_tag'logo_iba.png', width: '90px'%>
+    <a href="http://iba-world.com/">
+      <%=image_tag'logo_iba.png', width: '90px'%>
+    </a>
   </div>
 
 </div>
@@ -99,7 +103,7 @@
           <ul class="dropdown-menu dropdown-menu-left">
             <li><a href="<%= index_path(:history, History::CCRC_CLASS) %>"><%= History::CCRC_CLASS %></a>
             </li>
-            <li><a href="<%= index_path(:history, History::CCRC_CLASS) %>"><%= History::ACC_CLASS %></a>
+            <li><a href="<%= index_path(:history, History::ACC_CLASS) %>"><%= History::ACC_CLASS %></a>
             </li>
           </ul>
         </li>

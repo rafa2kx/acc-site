@@ -1,114 +1,71 @@
-<div class="row">
-  <div class="box">
-    <%= link_to admin_path,class: 'btn btn-default', style:'float:right' do %>
-        <span class="glyphicon glyphicon-home"></span>
-    <% end  %>
-    <%= form_for @user, :html => { :role => "form" } do |f| %>
+<%= form_for(@user, {url: {action: 'create'}}) do |f| %>
 
-        <% if @user.errors.any? %>
-            <div id="error_expl" class="panel panel-danger">
-              <div class="panel-heading">
-                <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
-              </div>
-              <div class="panel-body">
-                <ul>
-                  <% @user.errors.full_messages.each do |msg| %>
-                      <li><%= msg %></li>
-                  <% end %>
-                </ul>
-              </div>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <% if !alert.nil?  %>
+        <% if !alert['success'].nil? %>
+            <div class="alert alert-success alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                &times;
+              </button>
+              <%= alert['success'] %>
             </div>
         <% end %>
-
-        <div class="form-group">
-          <%= f.label :nickname, :class => 'control-label col-lg-2' %>
-          <%= f.text_field :nickname, :class => 'form-control' %>
-          <%=f.error_span(:nickname) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, :class => 'control-label col-lg-2' %>
-          <%= f.text_field :password, :class => 'form-control' %>
-          <%=f.error_span(:password) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :name, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :name, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:name) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :email, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :email, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:email) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :encrypted_password, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :encrypted_password, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:encrypted_password) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :reset_password_token, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :reset_password_token, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:reset_password_token) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :reset_password_sent_at, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :reset_password_sent_at, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:reset_password_sent_at) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :remember_created_at, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :remember_created_at, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:remember_created_at) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :current_sign_in_at, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :current_sign_in_at, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:current_sign_in_at) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :last_sign_in_at, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :last_sign_in_at, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:last_sign_in_at) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :current_sign_in_ip, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :current_sign_in_ip, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:current_sign_in_ip) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :last_sign_in_ip, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :last_sign_in_ip, :class => 'form-control' %>
-          </div>
-          <%=f.error_span(:last_sign_in_ip) %>
-        </div>
-
-        <div class="form-group">
-          <div class="col-lg-offset-2 col-lg-10">
-            <%= f.submit nil, :class => 'btn btn-primary' %>
-            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                        root_path, :class => 'btn btn-default' %>
-          </div>
-        </div>
-
+        <% if !alert['error'].nil? %>
+            <div class="alert alert-danger alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                &times;
+              </button>
+              <%= alert['error'] %>
+            </div>
+        <% end %>
     <% end %>
-  </div>
-</div>
+
+    <div class="row">
+      <div class="box">
+        <%= link_to admin_path,class: 'btn btn-default', style:'float:right' do %>
+            <span class="glyphicon glyphicon-home"></span>
+        <% end  %>
+        <div class="col-lg-12">
+          <hr>
+          <h2 class="intro-text text-center"><strong><%= t ('new_user') %></strong>
+          </h2>
+          <hr>
+        </div>
+        <div class="col-md-8 col-md-offset-2 ">
+          <div class="field">
+            <%= f.label :nickname, :class => 'control-label col-lg-2' %>
+            <%= f.text_field :nickname, :class => 'form-control' %>
+            <%=f.error_span(:nickname) %>
+          </div>
+          <div class="field">
+            <%= f.label :password, :class => 'control-label col-lg-2' %>
+            <%= f.text_field :password, :class => 'form-control' %>
+            <%=f.error_span(:password) %>
+          </div>
+          <div class="field">
+            <%= f.label :name, :class => 'control-label col-lg-2' %>
+
+            <%= f.text_field :name, :class => 'form-control' %>
+            <%=f.error_span(:name) %>
+          </div>
+          <div class="field">
+            <%= f.label :email, :class => 'control-label col-lg-2' %>
+            <%= f.text_field :email, :class => 'form-control' %>
+            <%=f.error_span(:email) %>
+          </div>
+          <%= f.submit t('save'), :class => 'btn btn-primary btn-block' %>
+          <%= link_to t('cancel'), admin_path,class: 'btn btn-default btn-block'  %>
+        </div>
+      </div>
+    </div>
+<% end %>
