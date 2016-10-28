@@ -93,4 +93,32 @@ ul#admin-tabs.nav>li>a{
 .box p{
     text-align: justify;
 }
+footer span.fa-facebook-square:hover{
+    color: #3b5998;
+    font-size: xx-large;
+}
+footer span.fa-facebook-square{
+    font-size: xx-large;
+}
+.nav-menu-bottom{
+    padding: 30px 5% 0px 5%;
+
+}
+.nav-menu-bottom ul li a{
+    color: #777;
+    text-decoration: none;
+
+}
+.nav-menu-bottom ul li a:hover{
+    color: #000000;
+    text-decoration: none;
+
+}
+.nav-menu-bottom ul li{
+    margin-bottom: 5px;
+}
+.nav-menu-bottom ul{
+    list-style: none;
+    padding: 0px 10px;
+}
 

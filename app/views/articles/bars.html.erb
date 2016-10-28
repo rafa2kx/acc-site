@@ -1,3 +1,12 @@
-<img src="https://maps.googleapis.com/maps/api/staticmap?center=88+A,Avenida+5ta,Playa,La+Habana,Cuba&zoom=16&size=1000x400&maptype=roadmap&markers=color:red%7label:%7C23.104113,-82.445898&key=<%= Rails.application.secrets.google_map_api_key %>"
-     alt="<%=  %>">
-</img>
+<div class="row">
+  <div class="box">
+    <div class="col-lg-10 col-lg-offset-1 text-center">
+      <span class="fa fa-wrench fa-5x"></span>
+      <% I18n.locale = :en %>
+      <p style="font-size: large; text-align: center"><%= t('mainteinance') %></p>
+      <!--<img src="https://maps.googleapis.com/maps/api/staticmap?center=88+A,Avenida+5ta,Playa,La+Habana,Cuba&zoom=16&size=1000x400&maptype=roadmap&markers=color:red%7label:%7C23.104113,-82.445898&key=<%= Rails.application.secrets.google_map_api_key %>"-->
+           <!--alt="<%=  %>">-->
+      </img>
+    </div>
+  </div>
+</div>

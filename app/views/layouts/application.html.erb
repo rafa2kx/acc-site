@@ -53,7 +53,7 @@
 
   </div>
   <div class ="col-md-1">
-    <a href="http://iba-world.com/">
+    <a href="http://iba-world.com/" target="_blank">
       <%=image_tag'logo_iba.png', width: '90px'%>
     </a>
   </div>
@@ -122,7 +122,7 @@
           </ul>
         </li>
         <li><a href="<%= bars_path %>"><%= t 'bars' %></a>
-        <li><a href="<%= information_path %>"><%= t('information') %></a>
+
         </li>
       </ul>
     </div>
@@ -139,10 +139,76 @@
 <!-- /.container -->
 
 <footer>
+  <div class="nav-menu-bottom">
+    <div class="col-sm-2">
+      <h5><%= t 'follow_us' %></h5>
+      <ul class="nav-pills nav-stacked">
+        <li>
+          <a href="https://www.facebook.com/acc" target="_blank"><span class="fa fa-facebook-square " ></span> </a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="col-sm-2">
+      <h5><%= t 'news' %></h5>
+      <ul class="nav-pills nav-stacked">
+        <li>
+          <a href="<%= index_path(:new, New::LOCAL_CLASS) %>"><%= t(New::LOCAL_CLASS) %></a>
+        </li>
+        <li>
+          <a href="<%= index_path(:new, New::INTERNATIONAL_CLASS) %>"><%= t(New::INTERNATIONAL_CLASS) %></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-2">
+      <h5><%= t 'events' %></h5>
+      <ul class="nav-pills nav-stacked">
+        <li>
+          <a href="<%= index_path(:new, Event::LOCAL_CLASS) %>"><%= t(Event::LOCAL_CLASS) %></a>
+        </li>
+        <li>
+          <a href="<%= index_path(:new, Event::INTERNATIONAL_CLASS) %>"><%= t(Event::INTERNATIONAL_CLASS) %></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-2">
+      <h5><%= t 'history' %></h5>
+      <ul class="nav-pills nav-stacked">
+        <li>
+          <a href="<%= index_path(:new, History::ACC_CLASS) %>"><%= t(History::ACC_CLASS) %></a>
+        </li>
+        <li>
+          <a href="<%= index_path(:new, History::CCRC_CLASS) %>"><%= t(History::CCRC_CLASS) %></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-2">
+      <h5><%= t 'recipes' %></h5>
+      <ul class="nav-pills nav-stacked">
+        <li>
+          <a href="<%= index_path(:recipe, Recipe::ANTIQUE_CLASS) %>"><%= t('antiques_cocktails') %></a>
+        </li>
+        <li>
+          <a href="<%= index_path(:recipe, Recipe::CLASSIC_CLASS) %>"><%= t('classics_cocktails') %></a>
+        </li>
+        <li>
+          <a href="<%= index_path(:recipe, Recipe::MODERN_CLASS) %>"><%= t('moderns_cocktails') %></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-2">
+      <h5><%= t 'site' %></h5>
+      <ul class="nav-pills nav-stacked">
+        <li><a href="<%= information_path %>"><%= t('information') %></a>
+        <li><a href="<%= admin_path %>"><%= t('administration') %></a>
+      </ul>
+    </div>
+  </div>
   <div class="container">
+
     <div class="row">
       <div class="col-lg-12 text-center">
-        <p>Copyright &copy; rafabreu88@gmail.com 2016</p>
+        <p>Copyright &copy; 2016 Asociaci&oacute;n de Cantineros de Cuba</p>
       </div>
     </div>
   </div>
