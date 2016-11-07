@@ -66,7 +66,7 @@ function add_item() {
         $(item).append(rem_item);
         var item_input = document.createElement('input');
         $(item_input).attr('type','hidden');
-        $(item_input).attr('name','article['+item_name+'s]['+items_count[item_name]+'][name]');
+        $(item_input).attr('name','recipe['+item_name+'s]['+items_count[item_name]+'][name]');
         $(item_input).attr('value',value);
         items_count[item_name]++;
         $(item).append(item_input);
